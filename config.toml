@@ -1,6 +1,6 @@
 ## Basic Configuration
 
-baseurl = "https://shenoybr.github.io/hugo-goa-demo/" 
+baseurl = "https://rabetian.net"
 builddrafts = false
 canonifyurls = false
 languageCode = "en-US"
@@ -9,43 +9,43 @@ contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 
-author = "Erlich Bachman"
-title = "Erlich Bachman"
+author = "Eike Rabetian"
+title = "Eike Rabetian"
 
 theme = "hugo-goa"
 
 ## Hugo Built-in Features
-disqusShortname = "https-shenoybr-github-io-hugo-goa-demo" # Comment out to disable Disqus.
+## disqusShortname = "https-shenoybr-github-io-hugo-goa-demo" # Comment out to disable Disqus.
 googleAnalytics = "XYZ"
 enableRobotsTXT = true
 
 ## Site Settings
 [params]
-author = "Erlich Bachman"
-intro = "Startup Guru Extraordinaire"
-description = "Now @Pied Piper. Previously @Hacker Hostel, @Bachmanity and @Aviato. <br/> \"What is F times 5? It's Fleventy-five.\""
+author = "Eike Rabetian"
+intro = "Python Consultant | Backend Engineer"
+description = "Now @ShipUp. Previously @Ariana, @Parsian and @GiGaComputers. <br/> \"I help people make the world's best software.\""
 authorimage = "headshot.jpg"
-dateformat = "Jan 2, 2006"
+dateformat = "Oct 8, 2020"
 
 ## Site Meta Settings
 [params.meta]
 description = "Simple minimalist theme"
-keywords = "minimalist,blog,goa,hugo,developer"
+keywords = "python,blog,software,engineer,developer"
 
 ## Social Accounts
 [params.social]
-github = "<username>"
-instagram = "<username>"
-linkedin = "<username>"
-twitter = "<username>"
-facebook = "<username>"
-google = "<username>"
-stackoverflow = "<username>"
-email = "you@example.com"
+github = "mohammadrabetian"
+instagram = "mohammadrabetian"
+linkedin = "mohammad-rabetian-324a57143"
+twitter = "mrabetian"
+##facebook = "<username>"
+##google = "<username>"
+stackoverflow = "13362409/tommy"
+email = "mohammadrabetian@yahoo.com"
 
 ## Extras
 [params.extra]
-copyright = "© 2016. Erlich Bachman. [Some Rights Reserved](http://creativecommons.org/licenses/by/3.0/)." 
+copyright = "© 2020. Eike Rabetian. All rights reserved." 
 poweredby = true
 hightlightjs = true
 
@@ -61,7 +61,7 @@ hightlightjs = true
     weight = 200
     url = "/about/"
 [[menu.main]]
-    name = "coderag"
-    identifier = "coderag"
+    name = "projects"
+    identifier = "projects"
     weight = 300
-    url = "/coderag/"
+    url = "/projects/"
