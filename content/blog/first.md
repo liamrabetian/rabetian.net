@@ -7,7 +7,7 @@ showpagemeta = true
 showcomments = true
 slug = ""
 tags = ["python", "interview", "data-structure"]
-title = "Obvious Questions, Hidden Details"
+title = "Simple Questions, Obvious Answers, Hidden Details"
 description = "How to know if someone is good at Python"
 
 +++
