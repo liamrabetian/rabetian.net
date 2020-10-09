@@ -64,4 +64,4 @@ hightlightjs = true
     name = "projects"
     identifier = "projects"
     weight = 300
-    url = "/projects/"
+    url = "/projects"
