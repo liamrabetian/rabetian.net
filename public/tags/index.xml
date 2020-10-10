@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Eike Rabetian</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Eike Rabetian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 02 Oct 2020 22:55:05 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>/tags/about/</link>
+      <pubDate>Fri, 02 Oct 2020 22:55:05 -0400</pubDate>
+      
+      <guid>/tags/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Structure</title>
+      <link>/tags/data-structure/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/tags/data-structure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interview</title>
+      <link>/tags/interview/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/tags/interview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Project</title>
+      <link>/tags/project/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/tags/project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

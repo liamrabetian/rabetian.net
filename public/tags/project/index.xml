@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project on Eike Rabetian</title>
+    <link>/tags/project/</link>
+    <description>Recent content in Project on Eike Rabetian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 02 Oct 2020 15:59:13 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/projects/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/projects/</guid>
+      <description>ichat - is an online support service for MTN-Irancell. shipup.net - is a company specialized in technology and shipping industry. Ahura - a God like Serializer for God like Developers. SAY - an employment related search engine for job listings with screening and other stuff. Auction Portal - a portal for ordering sim cards and business cards. Hi Estate - a real estate business via IT-based solutions. BackEnd Developer University - a backend developer learning path.</description>
+    </item>
+    
+  </channel>
+</rss>
