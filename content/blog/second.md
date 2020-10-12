@@ -1,10 +1,9 @@
 +++ 
-draft = false 
-comments = false 
+comments = true 
+date = "2020-10-02T15:59:13-04:00"
 slug = "" 
 tags = ["engineering", "programming"]
 categories = ["engineering"]
-date = "2020-10-12T15:59:13-04:00"
 showpagemeta = true
 showcomments = true
 title = "Websites You Need To Bookmark As A Programmer"
