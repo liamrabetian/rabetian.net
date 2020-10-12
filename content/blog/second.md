@@ -10,14 +10,14 @@ title = "Websites You Need To Bookmark As A Programmer"
 description = "Believe me, you need to look at these stuff"
 +++
 
-I was personally fascinated by the materials i these websites. Every time I look at the work has been done on these sites I get a small tangling feeling in my head. To be honest I'm blown away by some of em. 
+I was personally fascinated by the materials in these websites. Every time I look at the work has been done on these sites I get a small tangling feeling in my head. To be honest I'm blown away by some of em. 
 
 Learning to program isn't just about learning the syntax or how to just combine things together. 
 As [Zi Chong Kao](https://kaomorphism.com/) says : "Learning to program is learning a mental model"
 
 I've gathered some of my favorite resources to learn the needed engineering part (like syntax, etc) together with mentality model of programming for the convenience of myself and others who want to deepen their knowledge on programming and have the mentality model of a programmer.
 
-I'm going to constantly add to this list as I'm going on this endless journey. Now I admit beforehand not all of these resources are going to be based on mentality or art of programming but more on engineering aspects. I promise; these are going to best resources to deepen your knowledge of programming.
+I'm going to constantly add to this list as I'm going on this endless journey. Now I admit beforehand not all of these resources are going to be based on mentality or art of programming but more on engineering aspects. I promise; these are going to be the best resources for deepening your knowledge of programming.
 
 * [Select Star SQL](https://selectstarsql.com/)
 This is an interactive book which aims to be the best place on the internet for learning SQL. It is free of charge, free of ads and doesn't require registration or downloads.
