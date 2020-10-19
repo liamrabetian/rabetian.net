@@ -41,5 +41,15 @@ Now everyone knows how to do a membership test! You just check if a collection o
 if number in list_of_numbers: # Do something  But what not everybody knows is the time complexity of membership testing.</description>
     </item>
     
+    <item>
+      <title>Websites You Need To Bookmark As A Programmer</title>
+      <link>/blog/second/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/second/</guid>
+      <description>I was personally fascinated by the materials in these websites. Every time I look at the work has been done on these sites I get a small tangling feeling in my head. To be honest I&amp;rsquo;m blown away by some of em.
+Learning to program isn&amp;rsquo;t just about learning the syntax or how to just combine things together. As Zi Chong Kao says : &amp;ldquo;Learning to program is learning a mental model&amp;rdquo;</description>
+    </item>
+    
   </channel>
 </rss>

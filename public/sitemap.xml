@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>/blog/second/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/about/</loc>
     <lastmod>2020-10-02T22:55:05-04:00</lastmod>
     <priority>0</priority>
@@ -54,6 +59,18 @@
   </url>
   
   <url>
+    <loc>/tags/engineering/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/engineering/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/interview/</loc>
     <lastmod>2020-10-02T15:59:13-04:00</lastmod>
     <priority>0</priority>
@@ -61,6 +78,12 @@
   
   <url>
     <loc>/categories/interview/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/programming/</loc>
     <lastmod>2020-10-02T15:59:13-04:00</lastmod>
     <priority>0</priority>
   </url>
