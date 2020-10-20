@@ -23,3 +23,7 @@ I'm going to constantly add to this list as I'm going on this endless journey. N
 This is an interactive book which aims to be the best place on the internet for learning SQL. It is free of charge, free of ads and doesn't require registration or downloads.
 You will learn SQL working on a dataset which documents Texas death row inmates executed from 1976 when the Supreme Court reinstated the death penalty, to the present.
 As the writer quotes: "On one level, the data is simply a part of a mundane programming book. On another, each row represents immense suffering, lives lost, and in some cases amazing redemption and acceptance."
+
+* [Reactive Manifesto](https://www.reactivemanifesto.org/)
+Systems built as Reactive Systems are more flexible, loosely-coupled and scalable. This makes them easier to develop and amenable to change. They are significantly more tolerant of failure and when failure does occur they meet it with elegance rather than disaster. Reactive Systems are highly responsive, giving users effective interactive feedback.
+Check it out.
