@@ -29,6 +29,3 @@ What tech stack I'm gonna build it with?
    
 
 And lastly, Coding Is for Everyone—as Long as You Speak English!   
-
-![Image](img/languages.jpg "Languages!")
-##### GETTY IMAGES
