@@ -41,7 +41,7 @@
 
 
 <header class="row text-left title">
-  <h1 class="title">Everything About Caching In general, And In Django</h1>
+  <h1 class="title">Docker, Celery and Queues</h1>
 </header>
 <section id="category-pane" class="row meta">
   
@@ -64,7 +64,233 @@
 </section>
 <section id="content-pane" class="row">
   <div class="col-md-12 text-justify content">
-    <p>Well I like everything about caching. There are a lot of cool stuff to learn about caching. So let&rsquo;s get to it.</p>
+    
+
+<p>There are a lot of blogs on how to setup docker and celery for development, but none of them are really practical or like a real world example of development.<br />
+So I&rsquo;m gonna show how I setup celery with docker while I have a few different celery queues for development.</p>
+
+<p>Setup Celery and Docker when you only have <code>one queue</code> :</p>
+
+<h3 id="dockerfile">Dockerfile</h3>
+
+<pre><code class="language-dockerfile">FROM python:3.8  
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONUNBUFFERED=1
+
+WORKDIR /  
+COPY requirements.txt ./  
+RUN pip install --no-cache-dir -r requirements.txt  
+RUN rm requirements.txt  
+
+COPY . /  
+WORKDIR /app
+</code></pre>
+
+<h3 id="docker-compose-yml">docker-compose.yml</h3>
+
+<pre><code class="language-docker-compose">version: '3'
+services: 
+  worker:
+    build: .
+    image: &amp;img worker 
+    command: [celery, worker, --app=worker.app, --pool=gevent, --concurrency=20, --loglevel=INFO]
+    environment: &amp;env      
+      - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      - rabbitmq
+    restart: 'no'
+    volumes:
+      - ./app:/app 
+
+  rabbitmq:
+    hostname: rabbit
+    image: rabbitmq:3.8.4-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5672:5672
+    container_name: rabbit
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/data/
+</code></pre>
+
+<p>Now you just start up the stack</p>
+
+<pre><code class="language-bash">docker-compose up -d
+</code></pre>
+
+<p>If you need to add another celery worker</p>
+
+<pre><code class="language-bash">docker-compose up -d --scale worker=2
+</code></pre>
+
+<p>Now this was pretty simple, but what should we do when we have <code>several celery queues</code> and we want a celery worker for each queue?<br />
+There are two ways to achieve this :</p>
+
+<h2 id="creating-a-celery-worker-for-each-queue">creating a celery worker for each queue :</h2>
+
+<h3 id="worker-dockerfile">worker.Dockerfile</h3>
+
+<pre><code class="language-dockerfile">FROM python:3.8
+RUN pip install celery, django-celery-beat
+COPY worker_entrypoint.sh /usr/bin/worker_entrypoint.sh
+WORKDIR /usr/src/app/
+CMD bash /usr/bin/worker_entrypoint.sh
+</code></pre>
+
+<h3 id="worker-entrypoint-sh">worker_entrypoint.sh</h3>
+
+<pre><code class="language-sh">echo &quot;&lt;---Waiting for rabbit to start---&gt;&quot;
+sleep 30
+echo &quot;&lt;---Starting Worker---&gt;&quot;
+echo &quot;QUEUES&quot; $QUEUES
+watchmedo auto-restart \
+--directory &quot;/usr/src/app/&quot; \
+--pattern &quot;*.py&quot; \
+--recursive \
+-- celery --app=worker.app --pool=gevent --concurrency=20 --loglevel=INFO -n $WORKER_NAME -Q $QUEUES
+</code></pre>
+
+<h3 id="docker-compose-yml-1">docker-compose.yml</h3>
+
+<pre><code class="language-docker-compose">version: '3'
+services:
+
+  worker:
+    image: &amp;worker
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    environment: &amp;env      
+      - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672
+      - QUEUES=celery
+    depends_on:
+      - rabbitmq
+    restart: 'no'
+    volumes:
+      - ./app:/app 
+
+  recommendation_worker:
+    image: &amp;worker
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    environment: &amp;env
+      - QUEUES=recommendation_worker
+    depends_on:
+      - rabbitmq
+
+  periodic_worker:
+    image: &amp;worker
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    environment: &amp;env
+      - QUEUES=periodic_worker
+    depends_on:
+      - rabbitmq
+
+  beat:
+    image: &amp;worker
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: [celery --app=worker.app beat]
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    hostname: rabbit
+    image: rabbitmq:3.8.4-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5672:5672
+    container_name: rabbit
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/data/
+
+</code></pre>
+
+<p>Now this works fine in production which is on a server machine. But for development purposes, it is really costly in terms of <code>memory usage</code>, <code>cpu usage</code>, and <code>docker build time</code> on your development machine. So what I&rsquo;ve done for development is this :</p>
+
+<h3 id="docker-compose-yml-2">docker-compose.yml</h3>
+
+<pre><code class="language-docker-compose">
+  worker:
+    image: &amp;worker
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    environment: &amp;env      
+      - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./app:/app 
+
+  rabbitmq:
+    hostname: rabbit
+    image: rabbitmq:3.8.4-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5672:5672
+    container_name: rabbit
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq/data/
+</code></pre>
+
+<h3 id="worker-entrypoint-sh-1">worker_entrypoint.sh</h3>
+
+<pre><code class="language-sh">echo &quot;&lt;---Waiting for rabbit to start---&gt;&quot;
+sleep 30
+echo &quot;&lt;---Starting Worker---&gt;&quot;
+echo &quot;QUEUES&quot; $QUEUES
+watchmedo auto-restart \
+--directory &quot;/usr/src/app/&quot; \
+--pattern &quot;*.py&quot; \
+--recursive \
+-- celery  --app=worker.app --beat \
+--pool=gevent --concurrency=20 --loglevel=INFO -Q $QUEUES
+</code></pre>
+
+<h3 id="worker-dockerfile-1">worker.Dockerfile</h3>
+
+<pre><code class="language-dockerfile">FROM python:3.8
+RUN pip install celery, django-celery-beat
+COPY worker_entrypoint.sh /usr/bin/worker_entrypoint.sh
+WORKDIR /usr/src/app/
+ENV QUEUES celery,recommendation_worker,periodic_worker
+CMD bash /usr/bin/worker_entrypoint.sh
+</code></pre>
+
+<p><em>Note</em> : This is only meant for development purposes</p>
+
+<p>This way you handle whatever queues you have with only one worker, the celery beat is also on one line command with the celery worker.</p>
+
+<h4 id="advantages">Advantages:</h4>
+
+<ul>
+<li>less building time</li>
+<li>mush less cpu and memory usage</li>
+<li>less logs when running docker</li>
+<li>less space used</li>
+<li>less code</li>
+</ul>
+
+<h4 id="disadvantages">Disadvantages:</h4>
+
+<ul>
+<li>it&rsquo;s only suited for development stage<br /></li>
+</ul>
+
+<p>If you need more workers you could scale the number of your workers:</p>
+
+<pre><code class="language-bash">docker-compose up -d --scale worker=5
+</code></pre>
 
   </div>
 </section>

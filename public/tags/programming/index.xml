@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Docker, Celery and Queues</title>
+      <link>/blog/third/</link>
+      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/third/</guid>
+      <description>There are a lot of blogs on how to setup docker and celery for development, but none of them are really practical or like a real world example of development.
+So I&amp;rsquo;m gonna show how I setup celery with docker while I have a few different celery queues for development.
+Setup Celery and Docker when you only have one queue :
+Dockerfile FROM python:3.8 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONUNBUFFERED=1 WORKDIR / COPY requirements.</description>
+    </item>
+    
+    <item>
       <title>Not Married To Any Tech Stack</title>
       <link>/blog/fourth/</link>
       <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
