@@ -1,6 +1,6 @@
 +++ 
 comments = true 
-date = "2020-10-02T15:59:13-04:00"
+date = "2020-10-20T15:59:13-04:00"
 slug = "" 
 tags = ["engineering", "programming"]
 categories = ["engineering"]

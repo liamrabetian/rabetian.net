@@ -25,7 +25,7 @@ author = "Eike Rabetian"
 intro = "Python Consultant | Backend Engineer"
 description = "Now @ShipUp. Previously @Ariana, @Parsian and @GiGaComputers. <br/> \"I help people make the world's best software.\""
 authorimage = "headshot.jpg"
-dateformat = ""
+dateformat = "2.1.2006"
 
 ## Site Meta Settings
 [params.meta]

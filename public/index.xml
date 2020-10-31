@@ -6,10 +6,42 @@
     <description>Recent content on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 02 Oct 2020 22:55:05 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 15:59:13 -0400</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker, Celery and Queues</title>
+      <link>/blog/third/</link>
+      <pubDate>Fri, 30 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/third/</guid>
+      <description>There are a lot of blogs on how to setup docker and celery for development, but none of them are really practical or like a real world example of development.
+So I&amp;rsquo;m gonna show how I setup celery with docker while I have a few different celery queues for development.
+Setup Celery and Docker when you only have one queue :
+Dockerfile FROM python:3.8 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONUNBUFFERED=1 WORKDIR / COPY requirements.</description>
+    </item>
+    
+    <item>
+      <title>Not Married To Any Tech Stack</title>
+      <link>/blog/fourth/</link>
+      <pubDate>Tue, 20 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/fourth/</guid>
+      <description>I&amp;rsquo;ve done some observation. If you look at job postings in big companies, they always post their job positions with the title &amp;ldquo;Software engineer&amp;rdquo; or &amp;ldquo;Senior software engineer&amp;rdquo;. While if you look at other companies which are just startups or not that big or might not be very famous, they always post their job offers with the title &amp;ldquo;{Some_Language} developer&amp;rdquo; or &amp;ldquo;Senior {Some_Language} developer&amp;rdquo;.
+Now what&amp;rsquo;s the difference here? A really good software engineer isn&amp;rsquo;t bound to any specific tool or technology!</description>
+    </item>
+    
+    <item>
+      <title>Websites You Need To Bookmark As A Programmer</title>
+      <link>/blog/second/</link>
+      <pubDate>Sun, 11 Oct 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/second/</guid>
+      <description>I was personally fascinated by the materials in these websites. Every time I look at the work has been done on these sites I get a small tangling feeling in my head. To be honest I&amp;rsquo;m blown away by some of em.
+Learning to program isn&amp;rsquo;t just about learning the syntax or how to just combine things together. As Zi Chong Kao says : &amp;ldquo;Learning to program is learning a mental model&amp;rdquo;</description>
+    </item>
     
     <item>
       <title>About</title>
@@ -30,28 +62,6 @@
     </item>
     
     <item>
-      <title>Docker, Celery and Queues</title>
-      <link>/blog/third/</link>
-      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
-      
-      <guid>/blog/third/</guid>
-      <description>There are a lot of blogs on how to setup docker and celery for development, but none of them are really practical or like a real world example of development.
-So I&amp;rsquo;m gonna show how I setup celery with docker while I have a few different celery queues for development.
-Setup Celery and Docker when you only have one queue :
-Dockerfile FROM python:3.8 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONUNBUFFERED=1 WORKDIR / COPY requirements.</description>
-    </item>
-    
-    <item>
-      <title>Not Married To Any Tech Stack</title>
-      <link>/blog/fourth/</link>
-      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
-      
-      <guid>/blog/fourth/</guid>
-      <description>I&amp;rsquo;ve done some observation. If you look at job postings in big companies, they always post their job positions with the title &amp;ldquo;Software engineer&amp;rdquo; or &amp;ldquo;Senior software engineer&amp;rdquo;. While if you look at other companies which are just startups or not that big or might not be very famous, they always post their job offers with the title &amp;ldquo;{Some_Language} developer&amp;rdquo; or &amp;ldquo;Senior {Some_Language} developer&amp;rdquo;.
-Now what&amp;rsquo;s the difference here? A really good software engineer isn&amp;rsquo;t bound to any specific tool or technology!</description>
-    </item>
-    
-    <item>
       <title>Simple Questions, Obvious Answers, Hidden Details</title>
       <link>/blog/first/</link>
       <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
@@ -61,16 +71,6 @@ Now what&amp;rsquo;s the difference here? A really good software engineer isn&am
 Like : how do you do a membership test in python?!
 Now everyone knows how to do a membership test! You just check if a collection of items contain a specific item. Something like ;
 if number in list_of_numbers: # Do something  But what not everybody knows is the time complexity of membership testing.</description>
-    </item>
-    
-    <item>
-      <title>Websites You Need To Bookmark As A Programmer</title>
-      <link>/blog/second/</link>
-      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
-      
-      <guid>/blog/second/</guid>
-      <description>I was personally fascinated by the materials in these websites. Every time I look at the work has been done on these sites I get a small tangling feeling in my head. To be honest I&amp;rsquo;m blown away by some of em.
-Learning to program isn&amp;rsquo;t just about learning the syntax or how to just combine things together. As Zi Chong Kao says : &amp;ldquo;Learning to program is learning a mental model&amp;rdquo;</description>
     </item>
     
   </channel>
