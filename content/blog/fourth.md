@@ -24,8 +24,7 @@ What tech stack I'm gonna build it with?
 
 * Golang
 * Gin
-* Vue
-* MySQL  
+* MySQL or Postgres
    
 
 And lastly, Coding Is for Everyone—as Long as You Speak English!   
