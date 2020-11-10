@@ -23,4 +23,6 @@ showcomments = true
 
 #### [<b>BackEnd Developer University</b>](https://github.com/mohammadrabetian/backend-developer-university) - a backend developer learning path.
 
+#### [<b>Django RateLimit</b>](https://github.com/jsocol/django-ratelimit) - Rate limiter for django projects.
+
 #### [<b>Open Source Stuff</b>](https://github.com/mohammadrabetian?tab=repositories) - just check my github.
