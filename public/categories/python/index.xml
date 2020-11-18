@@ -6,10 +6,21 @@
     <description>Recent content in Python on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 02 Oct 2020 15:59:13 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2020 15:59:13 -0400</lastBuildDate>
     
 	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How To Count Your Postgres Tables In Django</title>
+      <link>/blog/fifth/</link>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/fifth/</guid>
+      <description>When you want to do a full count on your tables in django, you often do it like this:
+MyModel.objects.count()  which will produce a sql like this:
+SELECT COUNT(*) AS &amp;quot;__count&amp;quot; FROM &amp;quot;myapp_mymodel&amp;quot;  Which is pretty fine most of the time, but what happens if you have a lot of data and rows on your table? Then for instance in my experience it took 20 seconds to count all the rows in a table!</description>
+    </item>
     
     <item>
       <title>Simple Questions, Obvious Answers, Hidden Details</title>

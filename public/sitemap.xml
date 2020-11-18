@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/fifth/</loc>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/third/</loc>
     <lastmod>2020-10-30T15:59:13-04:00</lastmod>
   </url>
@@ -46,7 +51,7 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -63,14 +68,32 @@
   </url>
   
   <url>
+    <loc>/tags/database/</loc>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/database/</loc>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/django/</loc>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/engineering/</loc>
-    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -112,13 +135,13 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/python/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
     <priority>0</priority>
   </url>
   

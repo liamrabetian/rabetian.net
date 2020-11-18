@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Database</title>
+      <link>/categories/database/</link>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/categories/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Engineering</title>
       <link>/categories/engineering/</link>
       <pubDate>Fri, 30 Oct 2020 15:59:13 -0400</pubDate>
@@ -50,7 +59,7 @@
     <item>
       <title>Python</title>
       <link>/categories/python/</link>
-      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
       
       <guid>/categories/python/</guid>
       <description></description>

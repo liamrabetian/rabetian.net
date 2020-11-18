@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Eike Rabetian</title>
-    <link>/tags/python/</link>
-    <description>Recent content in Python on Eike Rabetian</description>
+    <title>Django on Eike Rabetian</title>
+    <link>/tags/django/</link>
+    <description>Recent content in Django on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 17 Nov 2020 15:59:13 -0400</lastBuildDate>
     
-	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,18 +20,6 @@
       <description>When you want to do a full count on your tables in django, you often do it like this:
 MyModel.objects.count()  which will produce a sql like this:
 SELECT COUNT(*) AS &amp;quot;__count&amp;quot; FROM &amp;quot;myapp_mymodel&amp;quot;  Which is pretty fine most of the time, but what happens if you have a lot of data and rows on your table? Then for instance in my experience it took 20 seconds to count all the rows in a table!</description>
-    </item>
-    
-    <item>
-      <title>Simple Questions, Obvious Answers, Hidden Details</title>
-      <link>/blog/first/</link>
-      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
-      
-      <guid>/blog/first/</guid>
-      <description>You want to know how good is someone at Python? You don&amp;rsquo;t need to ask strange obscure questions. Just ask for simple questions which has some hidden technology details behind it.
-Like : how do you do a membership test in python?!
-Now everyone knows how to do a membership test! You just check if a collection of items contain a specific item. Something like ;
-if number in list_of_numbers: # Do something  But what not everybody knows is the time complexity of membership testing.</description>
     </item>
     
   </channel>

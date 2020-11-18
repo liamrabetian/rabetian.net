@@ -30,9 +30,27 @@
     </item>
     
     <item>
+      <title>Database</title>
+      <link>/tags/database/</link>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Django</title>
+      <link>/tags/django/</link>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
+      
+      <guid>/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Engineering</title>
       <link>/tags/engineering/</link>
-      <pubDate>Fri, 30 Oct 2020 15:59:13 -0400</pubDate>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
       
       <guid>/tags/engineering/</guid>
       <description></description>
@@ -68,7 +86,7 @@
     <item>
       <title>Python</title>
       <link>/tags/python/</link>
-      <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
+      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
       
       <guid>/tags/python/</guid>
       <description></description>
