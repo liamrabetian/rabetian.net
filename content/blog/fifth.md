@@ -7,7 +7,7 @@ showpagemeta = true
 showcomments = true
 slug = ""
 tags = ["python", "database", "engineering", "django"]
-title = "How To Count Your Postgres Tables In Django"
+title = "How To Count Your Postgres Tables In Django, Fast!"
 description = "Postgres full table counts suck! let's do a faster version"
 
 +++
