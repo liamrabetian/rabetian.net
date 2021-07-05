@@ -14,5 +14,4 @@ showpagemeta = false
 #### Django, FastApi, Java, Distributed systems, SQL/NoSQL, Docker, etc.
 #### Now Lead Backend Engineer @[shipup](https://shipup.net)
 
-#### I enjoy learning new things. The queue is at Go, Better System Design!, ML/AI on my list of learning new things.
-
+#### Always learning...
