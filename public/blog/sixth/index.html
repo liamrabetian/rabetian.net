@@ -17,9 +17,6 @@
 <meta name="generator" content="Hugo 0.86.1" />
 
 
-  <link href="Page%28/tags/about%29" rel="alternate" type="application/rss+xml" title="Eike Rabetian" />
-  <link href="Page%28/tags/about%29" rel="feed" type="application/rss+xml" title="Eike Rabetian" />
-
 
 
 
@@ -43,36 +40,79 @@
 <div class="container">
 
 
-<section id="list-pane" class="row list">
-  <ul >
-    
-    <li class="list-entry">
-      <a class="list-entry-link" href="/about/">About</a>
-      <p class="meta">
-        2.10.2020
-        <span class="category">
-        
-        
-        
-        —
-        
-        
-        <a class="category" href="/categories/about">ABOUT</a>
-        
-        
-        
-        </span>
-      </p>
-      <p class="excerpt">
+<header class="row text-left title">
+  <h1 class="title">Rate Limit With A Recorder</h1>
+</header>
+<section id="category-pane" class="row meta">
+  
+  <div class="col-md-12">
+    <h6 class="text-left meta">
+      PUBLISHED ON 2.8.2021
       
-      </p>
-    </li>
-    
-  </ul>
+      
+      
+      —
+      
+      
+      <a class="meta" href="/categories/database">DATABASE</a>, 
+      
+      <a class="meta" href="/categories/python">PYTHON</a>
+      
+      
+      
+    </h6>
+  </div>
+  
+</section>
+<section id="content-pane" class="row">
+  <div class="col-md-12 text-justify content">
+    <p>You all have used rate-limiting in your apps(you know the system to prevent an API from being overwhelmed or being abused!) and if you haven&rsquo;t, I strongly suggest doing so. There is a handy package specifically for Django called django-ratelimit that provides a decorator to rate-limit views. What is not covered by this package, is the ability to see what IPs or users have exceeded the ratelimit. So I have built a proxy and two handlers on top of this package(one for the cache and one for the database backend) which stores the mentioned data and enables you to look it up inside the Django admin panel.</p>
+<p>Check it out here:
+<a href="https://github.com/mohammadrabetian/django-ratelimit">django-ratelimit</a></p>
+
+  </div>
+</section>
+<section id="tag-pane" class="row meta">
+  
+  <div class="col-md-12">
+    <h6 class="text-right meta">
+      
+      
+      
+      TAGS:
+      
+      
+      <a class="meta" href="/tags/database">DATABASE</a>, 
+      
+      <a class="meta" href="/tags/django">DJANGO</a>, 
+      
+      <a class="meta" href="/tags/engineering">ENGINEERING</a>, 
+      
+      <a class="meta" href="/tags/python">PYTHON</a>
+      
+      
+      
+    </h6>
+  </div>
+  
 </section>
 
 
+
+
+
+
+
+
 <section id="menu-pane" class="row menu text-center">
+  
+  
+  <span><a class="menu-item" href="/blog/fifth/">&lt; prev | </a></span>
+  
+  
+  <span><a class="menu-item" href="/blog">blog</a></span>
+  
+  
   
   <h4 class="text-center"><a class="menu-item" href="/">home</a></h4>
 </section>
@@ -101,4 +141,5 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
 

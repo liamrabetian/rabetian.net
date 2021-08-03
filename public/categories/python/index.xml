@@ -1,15 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Eike Rabetian</title>
+    <title>python on Eike Rabetian</title>
     <link>/categories/python/</link>
-    <description>Recent content in Python on Eike Rabetian</description>
+    <description>Recent content in python on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 17 Nov 2020 15:59:13 -0400</lastBuildDate>
-    
-	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 02 Aug 2021 15:59:13 -0400</lastBuildDate><atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rate Limit With A Recorder</title>
+      <link>/blog/sixth/</link>
+      <pubDate>Mon, 02 Aug 2021 15:59:13 -0400</pubDate>
+      
+      <guid>/blog/sixth/</guid>
+      <description>You all have used rate-limiting in your apps(you know the system to prevent an API from being overwhelmed or being abused!) and if you haven&amp;rsquo;t, I strongly suggest doing so. There is a handy package specifically for Django called django-ratelimit that provides a decorator to rate-limit views. What is not covered by this package, is the ability to see what IPs or users have exceeded the ratelimit. So I have built a proxy and two handlers on top of this package(one for the cache and one for the database backend) which stores the mentioned data and enables you to look it up inside the Django admin panel.</description>
+    </item>
     
     <item>
       <title>How To Count Your Postgres Tables In Django, Fast!</title>
@@ -18,8 +23,8 @@
       
       <guid>/blog/fifth/</guid>
       <description>When you want to do a full count on your tables in django, you often do it like this:
-MyModel.objects.count()  which will produce a sql like this:
-SELECT COUNT(*) AS &amp;quot;__count&amp;quot; FROM &amp;quot;myapp_mymodel&amp;quot;  Which is pretty fine most of the time, but what happens if you have a lot of data and rows on your table? Then for instance in my experience it took 20 seconds to count all the rows in a table!</description>
+MyModel.objects.count() which will produce a sql like this:
+SELECT COUNT(*) AS &amp;#34;__count&amp;#34; FROM &amp;#34;myapp_mymodel&amp;#34; Which is pretty fine most of the time, but what happens if you have a lot of data and rows on your table? Then for instance in my experience it took 20 seconds to count all the rows in a table!</description>
     </item>
     
     <item>
@@ -31,7 +36,7 @@ SELECT COUNT(*) AS &amp;quot;__count&amp;quot; FROM &amp;quot;myapp_mymodel&amp;
       <description>You want to know how good is someone at Python? You don&amp;rsquo;t need to ask strange obscure questions. Just ask for simple questions which has some hidden technology details behind it.
 Like : how do you do a membership test in python?!
 Now everyone knows how to do a membership test! You just check if a collection of items contain a specific item. Something like ;
-if number in list_of_numbers: # Do something  But what not everybody knows is the time complexity of membership testing.</description>
+if number in list_of_numbers: # Do something But what not everybody knows is the time complexity of membership testing.</description>
     </item>
     
   </channel>

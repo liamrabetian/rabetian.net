@@ -14,7 +14,7 @@
 
 <title>Eike Rabetian</title>
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.86.1" />
 
 
 
@@ -66,28 +66,17 @@
 </section>
 <section id="content-pane" class="row">
   <div class="col-md-12 text-justify content">
-    
-
-<p>You want to know how good is someone at Python? You don&rsquo;t need to ask strange obscure questions. Just ask for simple questions which has some hidden technology details behind it.</p>
-
+    <p>You want to know how good is someone at Python? You don&rsquo;t need to ask strange obscure questions. Just ask for simple questions which has some hidden technology details behind it.</p>
 <p>Like : how do you do a membership test in python?!</p>
-
 <p>Now everyone knows how to do a membership test! You just check if a collection of items contain a specific item.
 Something like ;</p>
-
-<pre><code class="language-python">if number in list_of_numbers:
-    # Do something
-</code></pre>
-
-<p>But what not everybody knows is the time complexity of membership testing.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> number <span style="color:#f92672">in</span> list_of_numbers:
+    <span style="color:#75715e"># Do something</span>
+</code></pre></div><p>But what not everybody knows is the time complexity of membership testing.
 lookup time in a list has O(n) time complexity. But lookup time in a set however has a constant O(1) time complexity.</p>
-
 <p>So, the question is really simple to answer, but what answer you get back is entirely on how much knowledge someone has on Python! :)</p>
-
 <p>For instance the difference between a membership test in a set vs a list can be <code>100 000</code> times faster! That could be huge!</p>
-
 <h5 id="technical-details">Technical details</h5>
-
 <p>Sets are implemented using hash tables. So whenever you try to test if some value is in the set or not,
 it just needs to check whether the object is at the position determined by its hash.</p>
 

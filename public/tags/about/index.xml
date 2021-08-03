@@ -1,23 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About on Eike Rabetian</title>
+    <title>about on Eike Rabetian</title>
     <link>/tags/about/</link>
-    <description>Recent content in About on Eike Rabetian</description>
+    <description>Recent content in about on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 02 Oct 2020 22:55:05 -0400</lastBuildDate>
-    
-	<atom:link href="/tags/about/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 02 Oct 2020 22:55:05 -0400</lastBuildDate><atom:link href="/tags/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>/about/</link>
       <pubDate>Fri, 02 Oct 2020 22:55:05 -0400</pubDate>
       
       <guid>/about/</guid>
-      <description> I do mostly backend engineering. I love python and ZEN of Python. Django, FastApi, Java, Distributed systems, SQL/NoSQL, Docker, etc. Now Lead Backend Engineer @shipup I enjoy learning new things. The queue is at Go, Better System Design!, ML/AI on my list of learning new things. </description>
+      <description>I do mostly backend engineering. I love python and ZEN of Python. Django, FastApi, Java, Distributed systems, SQL/NoSQL, Docker, etc. Now Lead Backend Engineer @shipup Always learning&amp;hellip; </description>
     </item>
     
   </channel>

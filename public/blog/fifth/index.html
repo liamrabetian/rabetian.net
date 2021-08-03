@@ -14,7 +14,7 @@
 
 <title>Eike Rabetian</title>
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.86.1" />
 
 
 
@@ -67,115 +67,83 @@
 <section id="content-pane" class="row">
   <div class="col-md-12 text-justify content">
     <p>When you want to do a full count on your tables in django, you often do it like this:</p>
-
-<pre><code class="language-python">MyModel.objects.count()
-</code></pre>
-
-<p>which will produce a sql like this:</p>
-
-<pre><code class="language-sql">SELECT COUNT(*) AS &quot;__count&quot; FROM &quot;myapp_mymodel&quot;
-</code></pre>
-
-<p>Which is pretty fine most of the time, but what happens if you have a lot of data and rows on your table? Then for instance in my experience it took 20 seconds to count all the rows in a table!! especially if you have a more complex query for your counts.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">MyModel<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>count()
+</code></pre></div><p>which will produce a sql like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">AS</span> <span style="color:#e6db74">&#34;__count&#34;</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#34;myapp_mymodel&#34;</span>
+</code></pre></div><p>Which is pretty fine most of the time, but what happens if you have a lot of data and rows on your table? Then for instance in my experience it took 20 seconds to count all the rows in a table!! especially if you have a more complex query for your counts.</p>
 <p>There&rsquo;s an option in postgres called estimate counts, which will give you well, an estimate for your counts! So unless you want a very precise number of counts from your table, you&rsquo;re better off this way:</p>
-
 <p>The sql query would be like this:</p>
-
-<pre><code class="language-sql">SELECT reltuples as approximate_row_count FROM pg_class WHERE relname = 'table_name';
-</code></pre>
-
-<p>Now what I needed was a function which receives a custom query and gives me back the approximate row counts. One smart person called Michael Fuhr has come up with this function to achieve this. So for more sophisticated queries you can use this function:</p>
-
-<pre><code class="language-sql">CREATE FUNCTION count_estimate(query text) RETURNS integer AS
-$func$
-DECLARE
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> reltuples <span style="color:#66d9ef">as</span> approximate_row_count <span style="color:#66d9ef">FROM</span> pg_class <span style="color:#66d9ef">WHERE</span> relname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;table_name&#39;</span>;
+</code></pre></div><p>Now what I needed was a function which receives a custom query and gives me back the approximate row counts. One smart person called Michael Fuhr has come up with this function to achieve this. So for more sophisticated queries you can use this function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">FUNCTION</span> count_estimate(query text) <span style="color:#66d9ef">RETURNS</span> integer <span style="color:#66d9ef">AS</span>
+<span style="color:#960050;background-color:#1e0010">$</span>func$
+<span style="color:#66d9ef">DECLARE</span>
     rec   record;
-    rows  integer;
-BEGIN
-    FOR rec IN EXECUTE 'EXPLAIN ' || query LOOP
-        rows := substring(rec.&quot;QUERY PLAN&quot; FROM ' rows=([[:digit:]]+)');
-        EXIT WHEN rows IS NOT NULL;
-    END LOOP;
+    <span style="color:#66d9ef">rows</span>  integer;
+<span style="color:#66d9ef">BEGIN</span>
+    <span style="color:#66d9ef">FOR</span> rec <span style="color:#66d9ef">IN</span> <span style="color:#66d9ef">EXECUTE</span> <span style="color:#e6db74">&#39;EXPLAIN &#39;</span> <span style="color:#f92672">||</span> query LOOP
+        <span style="color:#66d9ef">rows</span> :<span style="color:#f92672">=</span> <span style="color:#66d9ef">substring</span>(rec.<span style="color:#e6db74">&#34;QUERY PLAN&#34;</span> <span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">&#39; rows=([[:digit:]]+)&#39;</span>);
+        EXIT <span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+    <span style="color:#66d9ef">END</span> LOOP;
 
-    RETURN rows;
-END
-$func$ LANGUAGE plpgsql;
-</code></pre>
+    <span style="color:#66d9ef">RETURN</span> <span style="color:#66d9ef">rows</span>;
+<span style="color:#66d9ef">END</span>
+<span style="color:#960050;background-color:#1e0010">$</span>func$ <span style="color:#66d9ef">LANGUAGE</span> plpgsql;
+</code></pre></div><p>You first have to create this function in your postgres database and use it like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> count_estimate(<span style="color:#e6db74">&#39;Your custom query here&#39;</span>);
+</code></pre></div><p>Now what I&rsquo;ve done in django to achieve all this is that at first I made sure I&rsquo;m gonna create this stored procedure in my database by creating it in a migration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">./</span>manage<span style="color:#f92672">.</span>py makemigrations <span style="color:#f92672">--</span>empty myapp <span style="color:#f92672">-</span>n count_estimate_procedure
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Generated by Django 2.2.11 on 2020-11-17 15:30</span>
 
-<p>You first have to create this function in your postgres database and use it like this:</p>
+<span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> migrations
 
-<pre><code class="language-sql">SELECT count_estimate('Your custom query here');
-</code></pre>
-
-<p>Now what I&rsquo;ve done in django to achieve all this is that at first I made sure I&rsquo;m gonna create this stored procedure in my database by creating it in a migration.</p>
-
-<pre><code class="language-python">./manage.py makemigrations --empty myapp -n count_estimate_procedure
-</code></pre>
-
-<pre><code class="language-python"># Generated by Django 2.2.11 on 2020-11-17 15:30
-
-from django.db import migrations
-
-STORED_PROCEDURE_SQL = &quot;&quot;&quot;
-CREATE FUNCTION count_estimate(query text) RETURNS integer AS
-$func$
-DECLARE
-    rec   record;
-    rows  integer;
-BEGIN
-    FOR rec IN EXECUTE 'EXPLAIN ' || query LOOP
-        rows := substring(rec.&quot;QUERY PLAN&quot; FROM ' rows=([[:digit:]]+)');
-        EXIT WHEN rows IS NOT NULL;
-    END LOOP;
-
-    RETURN rows;
-END
-$func$ LANGUAGE plpgsql;
-&quot;&quot;&quot;
+STORED_PROCEDURE_SQL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">CREATE FUNCTION count_estimate(query text) RETURNS integer AS
+</span><span style="color:#e6db74">$func$
+</span><span style="color:#e6db74">DECLARE
+</span><span style="color:#e6db74">    rec   record;
+</span><span style="color:#e6db74">    rows  integer;
+</span><span style="color:#e6db74">BEGIN
+</span><span style="color:#e6db74">    FOR rec IN EXECUTE &#39;EXPLAIN &#39; || query LOOP
+</span><span style="color:#e6db74">        rows := substring(rec.&#34;QUERY PLAN&#34; FROM &#39; rows=([[:digit:]]+)&#39;);
+</span><span style="color:#e6db74">        EXIT WHEN rows IS NOT NULL;
+</span><span style="color:#e6db74">    END LOOP;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    RETURN rows;
+</span><span style="color:#e6db74">END
+</span><span style="color:#e6db74">$func$ LANGUAGE plpgsql;
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 
 
-class Migration(migrations.Migration):
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Migration</span>(migrations<span style="color:#f92672">.</span>Migration):
 
-    dependencies = [
-        (&quot;myapp&quot;, &quot;0005_some_other_migration_file&quot;),
+    dependencies <span style="color:#f92672">=</span> [
+        (<span style="color:#e6db74">&#34;myapp&#34;</span>, <span style="color:#e6db74">&#34;0005_some_other_migration_file&#34;</span>),
     ]
 
-    operations = [
-        migrations.RunSQL(
-            (STORED_PROCEDURE_SQL), (&quot;DROP FUNCTION IF EXISTS count_estimate;&quot;)
+    operations <span style="color:#f92672">=</span> [
+        migrations<span style="color:#f92672">.</span>RunSQL(
+            (STORED_PROCEDURE_SQL), (<span style="color:#e6db74">&#34;DROP FUNCTION IF EXISTS count_estimate;&#34;</span>)
         )
     ]
-</code></pre>
-
-<p>and then create a helper function to call this stored procedure from django:</p>
-
-<pre><code class="language-python">def estimate_count_fast(sql):
-    &quot;&quot;&quot; postgres really sucks at full table counts, this is a faster version&quot;&quot;&quot;
-    cursor = connection.cursor()
-    cursor.execute(sql)
-    row = cursor.fetchone()
-    return int(row[0])
-</code></pre>
-
-<p>Now you just have to write your count sql and give it to this function, in my case it was something like this:</p>
-
-<pre><code class="language-python">MYMODEL_COUNT_SQL = &quot;&quot;&quot;
-SELECT count_estimate('SELECT * FROM myapp_mymodel 
-WHERE NOT (&quot;myapp_mymodel&quot;.&quot;id&quot; IN (SELECT U0.&quot;id&quot; FROM &quot;myapp_mymodel&quot; U0 
-LEFT OUTER JOIN &quot;myanotherapp_myanothermodel&quot; U1 ON (U0.&quot;id&quot; = U1&quot;mymodel_id&quot;) 
-WHERE U1.&quot;somemodel_id&quot; IS NULL))');
-&quot;&quot;&quot;
-</code></pre>
-
-<p>Now it might not be a pretty sql, but you get my point. Don&rsquo;t you?!</p>
-
+</code></pre></div><p>and then create a helper function to call this stored procedure from django:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">estimate_count_fast</span>(sql):
+    <span style="color:#e6db74">&#34;&#34;&#34; postgres really sucks at full table counts, this is a faster version&#34;&#34;&#34;</span>
+    cursor <span style="color:#f92672">=</span> connection<span style="color:#f92672">.</span>cursor()
+    cursor<span style="color:#f92672">.</span>execute(sql)
+    row <span style="color:#f92672">=</span> cursor<span style="color:#f92672">.</span>fetchone()
+    <span style="color:#66d9ef">return</span> int(row[<span style="color:#ae81ff">0</span>])
+</code></pre></div><p>Now you just have to write your count sql and give it to this function, in my case it was something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">MYMODEL_COUNT_SQL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">SELECT count_estimate(&#39;SELECT * FROM myapp_mymodel 
+</span><span style="color:#e6db74">WHERE NOT (&#34;myapp_mymodel&#34;.&#34;id&#34; IN (SELECT U0.&#34;id&#34; FROM &#34;myapp_mymodel&#34; U0 
+</span><span style="color:#e6db74">LEFT OUTER JOIN &#34;myanotherapp_myanothermodel&#34; U1 ON (U0.&#34;id&#34; = U1&#34;mymodel_id&#34;) 
+</span><span style="color:#e6db74">WHERE U1.&#34;somemodel_id&#34; IS NULL))&#39;);
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</code></pre></div><p>Now it might not be a pretty sql, but you get my point. Don&rsquo;t you?!</p>
 <p>And use this query in my helper function:</p>
-
-<pre><code class="language-python">estimate_count_fast(MYMODEL_COUNT_SQL)
-</code></pre>
-
-<p>And that&rsquo;s pretty much it. Wish you a very fast performant system!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">estimate_count_fast(MYMODEL_COUNT_SQL)
+</code></pre></div><p>And that&rsquo;s pretty much it. Wish you a very fast performant system!</p>
 
   </div>
 </section>
@@ -219,6 +187,8 @@ WHERE U1.&quot;somemodel_id&quot; IS NULL))');
   
   <span><a class="menu-item" href="/blog">blog</a></span>
   
+  
+  <span><a class="menu-item" href="/blog/sixth/"> | next &gt;</a></span>
   
   
   <h4 class="text-center"><a class="menu-item" href="/">home</a></h4>

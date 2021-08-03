@@ -1,154 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>/blog/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/database/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/categories/database/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/django/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/engineering/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/python/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/categories/python/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/blog/sixth/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-08-02T15:59:13-04:00</lastmod>
+  </url><url>
     <loc>/blog/fifth/</loc>
     <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/blog/third/</loc>
     <lastmod>2020-10-30T15:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/categories/engineering/</loc>
+    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/programming/</loc>
+    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
+  </url><url>
     <loc>/blog/fourth/</loc>
     <lastmod>2020-10-20T15:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/blog/second/</loc>
     <lastmod>2020-10-11T15:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/about/</loc>
     <lastmod>2020-10-02T22:55:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/tags/about/</loc>
+    <lastmod>2020-10-02T22:55:05-04:00</lastmod>
+  </url><url>
+    <loc>/categories/about/</loc>
+    <lastmod>2020-10-02T22:55:05-04:00</lastmod>
+  </url><url>
     <loc>/projects/</loc>
     <lastmod>2020-10-02T15:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/tags/data-structure/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/interview/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/categories/interview/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/tags/project/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+  </url><url>
+    <loc>/categories/project/</loc>
+    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
+  </url><url>
     <loc>/blog/first/</loc>
     <lastmod>2020-10-02T15:59:13-04:00</lastmod>
   </url>
-  
-  <url>
-    <loc>/tags/about/</loc>
-    <lastmod>2020-10-02T22:55:05-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/about/</loc>
-    <lastmod>2020-10-02T22:55:05-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2020-10-02T22:55:05-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/data-structure/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/database/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/database/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/django/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/engineering/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/engineering/</loc>
-    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/interview/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/interview/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/programming/</loc>
-    <lastmod>2020-10-30T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/project/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/project/</loc>
-    <lastmod>2020-10-02T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/python/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/python/</loc>
-    <lastmod>2020-11-17T15:59:13-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-10-02T22:55:05-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
 </urlset>

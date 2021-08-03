@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Interview on Eike Rabetian</title>
+    <title>interview on Eike Rabetian</title>
     <link>/categories/interview/</link>
-    <description>Recent content in Interview on Eike Rabetian</description>
+    <description>Recent content in interview on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 02 Oct 2020 15:59:13 -0400</lastBuildDate>
-    
-	<atom:link href="/categories/interview/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 02 Oct 2020 15:59:13 -0400</lastBuildDate><atom:link href="/categories/interview/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple Questions, Obvious Answers, Hidden Details</title>
       <link>/blog/first/</link>
@@ -20,7 +16,7 @@
       <description>You want to know how good is someone at Python? You don&amp;rsquo;t need to ask strange obscure questions. Just ask for simple questions which has some hidden technology details behind it.
 Like : how do you do a membership test in python?!
 Now everyone knows how to do a membership test! You just check if a collection of items contain a specific item. Something like ;
-if number in list_of_numbers: # Do something  But what not everybody knows is the time complexity of membership testing.</description>
+if number in list_of_numbers: # Do something But what not everybody knows is the time complexity of membership testing.</description>
     </item>
     
   </channel>

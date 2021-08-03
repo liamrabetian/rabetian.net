@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Eike Rabetian</title>
@@ -6,31 +6,27 @@
     <description>Recent content in Categories on Eike Rabetian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 02 Oct 2020 22:55:05 -0400</lastBuildDate>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 02 Aug 2021 15:59:13 -0400</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About</title>
-      <link>/categories/about/</link>
-      <pubDate>Fri, 02 Oct 2020 22:55:05 -0400</pubDate>
-      
-      <guid>/categories/about/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Database</title>
+      <title>database</title>
       <link>/categories/database/</link>
-      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
+      <pubDate>Mon, 02 Aug 2021 15:59:13 -0400</pubDate>
       
       <guid>/categories/database/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Engineering</title>
+      <title>python</title>
+      <link>/categories/python/</link>
+      <pubDate>Mon, 02 Aug 2021 15:59:13 -0400</pubDate>
+      
+      <guid>/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>engineering</title>
       <link>/categories/engineering/</link>
       <pubDate>Fri, 30 Oct 2020 15:59:13 -0400</pubDate>
       
@@ -39,7 +35,16 @@
     </item>
     
     <item>
-      <title>Interview</title>
+      <title>about</title>
+      <link>/categories/about/</link>
+      <pubDate>Fri, 02 Oct 2020 22:55:05 -0400</pubDate>
+      
+      <guid>/categories/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>interview</title>
       <link>/categories/interview/</link>
       <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
       
@@ -48,20 +53,11 @@
     </item>
     
     <item>
-      <title>Project</title>
+      <title>project</title>
       <link>/categories/project/</link>
       <pubDate>Fri, 02 Oct 2020 15:59:13 -0400</pubDate>
       
       <guid>/categories/project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>/categories/python/</link>
-      <pubDate>Tue, 17 Nov 2020 15:59:13 -0400</pubDate>
-      
-      <guid>/categories/python/</guid>
       <description></description>
     </item>
     

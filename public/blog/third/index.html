@@ -14,7 +14,7 @@
 
 <title>Eike Rabetian</title>
 
-<meta name="generator" content="Hugo 0.40.1" />
+<meta name="generator" content="Hugo 0.86.1" />
 
 
 
@@ -64,30 +64,22 @@
 </section>
 <section id="content-pane" class="row">
   <div class="col-md-12 text-justify content">
-    
-
-<p>There are a lot of blogs on how to setup docker and celery for development, but none of them are really practical or like a real world example of development.<br />
+    <p>There are a lot of blogs on how to setup docker and celery for development, but none of them are really practical or like a real world example of development.<br>
 So I&rsquo;m gonna show how I setup celery with docker while I have a few different celery queues for development.</p>
-
 <p>Setup Celery and Docker when you only have <code>one queue</code> :</p>
-
 <h3 id="dockerfile">Dockerfile</h3>
-
-<pre><code class="language-dockerfile">FROM python:3.8  
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONUNBUFFERED=1
-
-WORKDIR /  
-COPY requirements.txt ./  
-RUN pip install --no-cache-dir -r requirements.txt  
-RUN rm requirements.txt  
-
-COPY . /  
-WORKDIR /app
-</code></pre>
-
-<h3 id="docker-compose-yml">docker-compose.yml</h3>
-
-<pre><code class="language-docker-compose">version: '3'
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.8  </span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> LANG<span style="color:#f92672">=</span>C.UTF-8 LC_ALL<span style="color:#f92672">=</span>C.UTF-8 PYTHONUNBUFFERED<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /  </span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> requirements.txt ./  <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install --no-cache-dir -r requirements.txt  <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm requirements.txt  <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . /  <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="docker-composeyml">docker-compose.yml</h3>
+<pre><code class="language-docker-compose" data-lang="docker-compose">version: '3'
 services: 
   worker:
     build: .
@@ -112,48 +104,31 @@ services:
     container_name: rabbit
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq/data/
-</code></pre>
-
-<p>Now you just start up the stack</p>
-
-<pre><code class="language-bash">docker-compose up -d
-</code></pre>
-
-<p>If you need to add another celery worker</p>
-
-<pre><code class="language-bash">docker-compose up -d --scale worker=2
-</code></pre>
-
-<p>Now this was pretty simple, but what should we do when we have <code>several celery queues</code> and we want a celery worker for each queue?<br />
+</code></pre><p>Now you just start up the stack</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d
+</code></pre></div><p>If you need to add another celery worker</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d --scale worker<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</code></pre></div><p>Now this was pretty simple, but what should we do when we have <code>several celery queues</code> and we want a celery worker for each queue?<br>
 There are two ways to achieve this :</p>
-
-<h2 id="creating-a-celery-worker-for-each-queue">creating a celery worker for each queue :</h2>
-
-<h3 id="worker-dockerfile">worker.Dockerfile</h3>
-
-<pre><code class="language-dockerfile">FROM python:3.8
-RUN pip install celery, django-celery-beat
-COPY worker_entrypoint.sh /usr/bin/worker_entrypoint.sh
-WORKDIR /usr/src/app/
-CMD bash /usr/bin/worker_entrypoint.sh
-</code></pre>
-
-<h3 id="worker-entrypoint-sh">worker_entrypoint.sh</h3>
-
-<pre><code class="language-sh">echo &quot;&lt;---Waiting for rabbit to start---&gt;&quot;
-sleep 30
-echo &quot;&lt;---Starting Worker---&gt;&quot;
-echo &quot;QUEUES&quot; $QUEUES
-watchmedo auto-restart \
---directory &quot;/usr/src/app/&quot; \
---pattern &quot;*.py&quot; \
---recursive \
--- celery --app=worker.app --pool=gevent --concurrency=20 --loglevel=INFO -n $WORKER_NAME -Q $QUEUES
-</code></pre>
-
-<h3 id="docker-compose-yml-1">docker-compose.yml</h3>
-
-<pre><code class="language-docker-compose">version: '3'
+<h2 id="creating-a-celery-worker-for-each-queue-">creating a celery worker for each queue :</h2>
+<h3 id="workerdockerfile">worker.Dockerfile</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.8</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install celery, django-celery-beat<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> worker_entrypoint.sh /usr/bin/worker_entrypoint.sh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app/</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> bash /usr/bin/worker_entrypoint.sh<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="worker_entrypointsh">worker_entrypoint.sh</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;&lt;---Waiting for rabbit to start---&gt;&#34;</span>
+sleep <span style="color:#ae81ff">30</span>
+echo <span style="color:#e6db74">&#34;&lt;---Starting Worker---&gt;&#34;</span>
+echo <span style="color:#e6db74">&#34;QUEUES&#34;</span> $QUEUES
+watchmedo auto-restart <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--directory <span style="color:#e6db74">&#34;/usr/src/app/&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--pattern <span style="color:#e6db74">&#34;*.py&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--recursive <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-- celery --app<span style="color:#f92672">=</span>worker.app --pool<span style="color:#f92672">=</span>gevent --concurrency<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> --loglevel<span style="color:#f92672">=</span>INFO -n $WORKER_NAME -Q $QUEUES
+</code></pre></div><h3 id="docker-composeyml-1">docker-compose.yml</h3>
+<pre><code class="language-docker-compose" data-lang="docker-compose">version: '3'
 services:
 
   worker:
@@ -211,13 +186,9 @@ services:
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq/data/
 
-</code></pre>
-
-<p>Now this works fine in production which is on a server machine. But for development purposes, it is really costly in terms of <code>memory usage</code>, <code>cpu usage</code>, and <code>docker build time</code> on your development machine. So what I&rsquo;ve done for development is this :</p>
-
-<h3 id="docker-compose-yml-2">docker-compose.yml</h3>
-
-<pre><code class="language-docker-compose">
+</code></pre><p>Now this works fine in production which is on a server machine. But for development purposes, it is really costly in terms of <code>memory usage</code>, <code>cpu usage</code>, and <code>docker build time</code> on your development machine. So what I&rsquo;ve done for development is this :</p>
+<h3 id="docker-composeyml-2">docker-compose.yml</h3>
+<pre><code class="language-docker-compose" data-lang="docker-compose">
   worker:
     image: &amp;worker
     build:
@@ -241,38 +212,27 @@ services:
     container_name: rabbit
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq/data/
-</code></pre>
-
-<h3 id="worker-entrypoint-sh-1">worker_entrypoint.sh</h3>
-
-<pre><code class="language-sh">echo &quot;&lt;---Waiting for rabbit to start---&gt;&quot;
-sleep 30
-echo &quot;&lt;---Starting Worker---&gt;&quot;
-echo &quot;QUEUES&quot; $QUEUES
-watchmedo auto-restart \
---directory &quot;/usr/src/app/&quot; \
---pattern &quot;*.py&quot; \
---recursive \
--- celery  --app=worker.app --beat \
---pool=gevent --concurrency=20 --loglevel=INFO -Q $QUEUES
-</code></pre>
-
-<h3 id="worker-dockerfile-1">worker.Dockerfile</h3>
-
-<pre><code class="language-dockerfile">FROM python:3.8
-RUN pip install celery, django-celery-beat
-COPY worker_entrypoint.sh /usr/bin/worker_entrypoint.sh
-WORKDIR /usr/src/app/
-ENV QUEUES celery,recommendation_worker,periodic_worker
-CMD bash /usr/bin/worker_entrypoint.sh
-</code></pre>
-
-<p><em>Note</em> : This is only meant for development purposes</p>
-
+</code></pre><h3 id="worker_entrypointsh-1">worker_entrypoint.sh</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">echo <span style="color:#e6db74">&#34;&lt;---Waiting for rabbit to start---&gt;&#34;</span>
+sleep <span style="color:#ae81ff">30</span>
+echo <span style="color:#e6db74">&#34;&lt;---Starting Worker---&gt;&#34;</span>
+echo <span style="color:#e6db74">&#34;QUEUES&#34;</span> $QUEUES
+watchmedo auto-restart <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--directory <span style="color:#e6db74">&#34;/usr/src/app/&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--pattern <span style="color:#e6db74">&#34;*.py&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--recursive <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>-- celery  --app<span style="color:#f92672">=</span>worker.app --beat <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--pool<span style="color:#f92672">=</span>gevent --concurrency<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> --loglevel<span style="color:#f92672">=</span>INFO -Q $QUEUES
+</code></pre></div><h3 id="workerdockerfile-1">worker.Dockerfile</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.8</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install celery, django-celery-beat<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> worker_entrypoint.sh /usr/bin/worker_entrypoint.sh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app/</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> QUEUES celery,recommendation_worker,periodic_worker<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> bash /usr/bin/worker_entrypoint.sh<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p><em>Note</em> : This is only meant for development purposes</p>
 <p>This way you handle whatever queues you have with only one worker, the celery beat is also on one line command with the celery worker.</p>
-
 <h4 id="advantages">Advantages:</h4>
-
 <ul>
 <li>less building time</li>
 <li>mush less cpu and memory usage</li>
@@ -280,18 +240,13 @@ CMD bash /usr/bin/worker_entrypoint.sh
 <li>less space used</li>
 <li>less code</li>
 </ul>
-
 <h4 id="disadvantages">Disadvantages:</h4>
-
 <ul>
-<li>it&rsquo;s only suited for development stage<br /></li>
+<li>it&rsquo;s only suited for development stage</li>
 </ul>
-
 <p>If you need more workers you could scale the number of your workers:</p>
-
-<pre><code class="language-bash">docker-compose up -d --scale worker=5
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -d --scale worker<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</code></pre></div>
   </div>
 </section>
 <section id="tag-pane" class="row meta">
