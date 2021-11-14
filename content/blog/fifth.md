@@ -103,10 +103,7 @@ def estimate_count_fast(sql):
 Now you just have to write your count sql and give it to this function, in my case it was something like this:  
 ```python
 MYMODEL_COUNT_SQL = """
-SELECT count_estimate('SELECT * FROM myapp_mymodel 
-WHERE NOT ("myapp_mymodel"."id" IN (SELECT U0."id" FROM "myapp_mymodel" U0 
-LEFT OUTER JOIN "myanotherapp_myanothermodel" U1 ON (U0."id" = U1"mymodel_id") 
-WHERE U1."somemodel_id" IS NULL))');
+SELECT count_estimate('SELECT * FROM myapp_mymodel WHERE some_condition');
 """
 ```
 Now it might not be a pretty sql, but you get my point. Don't you?!  

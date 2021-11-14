@@ -135,10 +135,7 @@ STORED_PROCEDURE_SQL <span style="color:#f92672">=</span> <span style="color:#e6
     <span style="color:#66d9ef">return</span> int(row[<span style="color:#ae81ff">0</span>])
 </code></pre></div><p>Now you just have to write your count sql and give it to this function, in my case it was something like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">MYMODEL_COUNT_SQL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">SELECT count_estimate(&#39;SELECT * FROM myapp_mymodel 
-</span><span style="color:#e6db74">WHERE NOT (&#34;myapp_mymodel&#34;.&#34;id&#34; IN (SELECT U0.&#34;id&#34; FROM &#34;myapp_mymodel&#34; U0 
-</span><span style="color:#e6db74">LEFT OUTER JOIN &#34;myanotherapp_myanothermodel&#34; U1 ON (U0.&#34;id&#34; = U1&#34;mymodel_id&#34;) 
-</span><span style="color:#e6db74">WHERE U1.&#34;somemodel_id&#34; IS NULL))&#39;);
+</span><span style="color:#e6db74">SELECT count_estimate(&#39;SELECT * FROM myapp_mymodel WHERE some_condition&#39;);
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </code></pre></div><p>Now it might not be a pretty sql, but you get my point. Don&rsquo;t you?!</p>
 <p>And use this query in my helper function:</p>
