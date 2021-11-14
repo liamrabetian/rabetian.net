@@ -9,8 +9,8 @@ contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 
-author = "Eike Rabetian"
-title = "Eike Rabetian"
+author = "Mo Rabetian"
+title = "Mo Rabetian"
 
 theme = "hugo-goa"
 
@@ -21,7 +21,7 @@ enableRobotsTXT = true
 
 ## Site Settings
 [params]
-author = "Eike Rabetian"
+author = "Mo Rabetian"
 intro = "Python Consultant | Backend Engineer"
 description = "Now @ShipUp. Previously @Ariana, @Parsian and @GiGaComputers. <br/> \"I help people make the world's best software.\""
 authorimage = "headshot.jpg"
@@ -29,7 +29,7 @@ dateformat = "2.1.2006"
 
 ## Site Meta Settings
 [params.meta]
-description = "Eike Rabetian floating on the web"
+description = "Mo Rabetian floating on the web"
 keywords = "python,blog,software,engineer,developer"
 
 ## Social Accounts
@@ -45,7 +45,7 @@ email = "mohammadrabetian@yahoo.com"
 
 ## Extras
 [params.extra]
-copyright = "© 2020. Eike Rabetian. All rights reserved." 
+copyright = "© 2020. Mo Rabetian. All rights reserved." 
 poweredby = true
 hightlightjs = true
 
